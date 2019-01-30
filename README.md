@@ -67,7 +67,7 @@ The calculated truth indicator must be equal to the responses received from the 
 1)	Tested the core protocol PKQuery whether it had any known security issue. (including the known response replay attacks) Tamarin did not find any issue. The constraints (why attacks will not be successful) of all security theories can be found in the thesis.
 2)	Developed a prototype to test the sizing and time-to-decision on client side whether it would be a bottleneck if it is widely used.
 
-**My tests were successful**, and I can conclude that my model satisfies all of the requirements.
+**My tests were successful**, and I can conclude that my model satisfies all of the requirements. [Please refer to my thesis under the documentation for detailed explanation of the requirements](https://github.com/volkankaya/ConsensusPKI/blob/master/ConsensusPKI/Documentation/ConsensusPKI%20-%20Data%20Driven%20Public%20Key%20Ecosystem%20backed%20by%20Blockchain%20and%20Fault%20Tolerance%20-%20Final%20-22-Jan-2019.pdf)
 
 The source code of the tamarin model and the source code of the prototype are also attached to the project.
 
@@ -78,8 +78,8 @@ There are two indicators Why I think the concept of calculation MerkleRoot using
 **Please note the source code is just for demonstration purposes only, do not use for any other purpose**
 
 Regarding the costs:
-Banks run bigger clusters of Hardware Security Modules for payment services. It is not too much to expect from all CAs to invest in 60 HSM boxes, to guarantee the throughput to serve internet as a whole.  Personally, CAs have at the moment a very lucrative business model. With a single HSM, they can just sing certificates which will be accepted as valid. The consequences of their wrong actions, on the contrary, are very high. [Check Diginotar case](https://en.wikipedia.org/wiki/DigiNotar) 
+Banks run bigger clusters of Hardware Security Modules for payment services. It is not too much to expect from all CAs to invest in 60 HSM boxes, to guarantee the throughput to serve internet as a whole.  Personally, CAs have at the moment a very lucrative business model. With a single HSM, they can just sing certificates which will be accepted as valid. The consequences of their wrong actions, on the contrary, have very big impact. [Check Diginotar case](https://en.wikipedia.org/wiki/DigiNotar) 
 
 # What is next
 
-let's discuss and try to falsify my theory :) 
+let's discuss, test, attack and try to falsify my theory :) 
