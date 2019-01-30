@@ -1,15 +1,15 @@
 # ConsensusPKI
 ConsensusPKI in a nutshell (for technical people)
 
-ConsensusPKI is an ecosystem-centric new PKI infrastructure to be used as a replacement of X.509 PKI.
+ConsensusPKI is an ecosystem-centric proposal for a new PKI infrastructure to be used as a replacement of X.509 PKI.
 
 ConsensusPKI changes the core of the X.509 PKI from “trust” to “not lying.”
 
 A Certificate authority in ConsensusPKI is an entity that never lies.
 
-Using this core principle, the ConsensusPKI solves all known issues that X.509 suffers.
+Using this core principle, the ConsensusPKI solves all known issues that X.509 suffers. [Please refer to yy thesis under the documentation for detailed explanation of the flaws]
 
-How it does;
+# How it does;
 1)	Replaces the local trust store on an end-user system with a chained CA certificate datastore, so that the local CA datastore on the end-user system would be managed by CAs only. Updating local CA certificate data store is managed by Fetch algorithm of the ConsensusPKI.
 
 What we have with X.509
@@ -58,11 +58,15 @@ On the client side, first, the Merkle root is calculated using the certificate. 
 The calculated truth indicator must be equal to the responses received from the CAs for a certificate to be accepted as valid.  
 
 
-I did two things to test my theory. 
+# I did two things to test my theory. 
+
 1)	Tested the core protocol PKQuery whether it had any known security issue. (including the known response replay attacks) Tamarin did not find any issue. The constraints (why attacks will not be successful) of all security theories can be found in the thesis.
 2)	Developed a prototype to test the sizing and time-to-decision on client side whether it would be a bottleneck if it is widely used.
+
 My tests were successful, and I can conclude that my model satisfies all of the requirements.
+
 The source code of the tamarin model and the source code of the prototype are also attached to the project.
+
 There are two indicators Why I think the concept of calculation MerkleRoot using the MerkleProof is completely new. 
 1)	I did not see in the literature (very weak indicator)
 2)	I did not see it any MerkleTree libraries, and I had to write it myself (the code is also included in the thesis) (Another weak indicator)
