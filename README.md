@@ -10,16 +10,17 @@ A Certificate authority in ConsensusPKI is an entity that never lies.
 Using this core principle, the ConsensusPKI solves all known issues that X.509 suffers. [Please refer to my thesis under the documentation for detailed explanation of the flaws]
 
 ## How it does;
-1)	Replaces the local trust store on an end-user system with a chained CA certificate datastore, so that the local CA datastore on the end-user system would be managed by CAs only. Updating local CA certificate data store is managed by Fetch algorithm of the ConsensusPKI.
+A)	Replaces the local trust store on an end-user system with a chained CA certificate datastore, so that the local CA datastore on the end-user system would be managed by CAs only. Updating local CA certificate data store is managed by Fetch algorithm of the ConsensusPKI.
 
 **What we have with X.509**
+
 Local CA datastore that end users, programs, and administrators can add remove CA certificates that they trust. Integrity check across the CA certificates is not possible.	
 
 **How it is being replaced**
 
 Chained datastore with a flat structure (no hierarchy) complimented by Fetch algorithm so that the local CA certificate data store can be updated by CAs only. You may ask, is there a temper resistance? Although not in the scope, yes there are many ways to achieve that, a trusted platform module TPM is one of it. PKQuery and Fetch are very similar. See PKQuery below for elaboration.
 
-2)	It changes the algorithm that interprets the certificates so that a lying CA would be detected. What is truth and what is a lie? The truth: only the latest issued certificate is a valid certificate, and everything else is a lie.
+B)	It changes the algorithm that interprets the certificates so that a lying CA would be detected. What is truth and what is a lie? The truth: only the latest issued certificate is a valid certificate, and everything else is a lie.
 
 **What we have with X.509**
 
@@ -29,7 +30,8 @@ X.509 path building to construct a trusted path. A certificate is not accepted i
 
 PKQuery uses PBFT to verify certificates and to detect a lying CA.
 
-Protection against attacks:
+**Protection against attacks:**
+
 1)	Asymmetric encryption and signing protect message exchanges
 2)	H(subject) is used in the query to remedy profiling and to protect the privacy of the end users
 3)	The client chooses 4 random CAs to ask the truth. The CAs don’t know the other responding CAs, and their only option is, to tell the truth
@@ -37,8 +39,8 @@ Protection against attacks:
 5)	Truth indicator = 
 H(ClientNonce + H(H(subject) + MerkleRoot) 
 
-Item 4 is very important (see “Pass the hash”). 
-3)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZPK based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
+Item 4 is very important (see [Pass the hash](https://en.wikipedia.org/wiki/Pass_the_hash)). 
+C)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZPK based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
 
 
 **What we have with X.509**
