@@ -36,13 +36,13 @@ PKQuery uses PBFT to verify certificates and to detect a lying CA.
 
 1)	Asymmetric encryption and signing protect message exchanges
 2)	H(subject) is used in the query to remedy profiling and to protect the privacy of the end users
-3)	The client chooses 4 random CAs to ask the truth. The CAs don’t know the other responding CAs, and their only option is, to tell the truth
+3)	The client chooses 4 random CAs to ask the truth. The CAs don’t know the other responding CAs, and their only option is to tell the truth
 4)	A client nonce is used during the query. The nonce guarantees that every client receives different truth indicator as a response from the CA
 5)	Truth indicator = 
 H(ClientNonce + H(H(subject) + MerkleRoot)) 
 
 Item 4 is very important (see [Pass the hash](https://en.wikipedia.org/wiki/Pass_the_hash)). 
-C)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZPK based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
+C)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZKP based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
 
 
 **What we have with X.509**
@@ -73,6 +73,13 @@ The source code of the tamarin model and the source code of the prototype are al
 
 There are two indicators Why I think the concept of calculation MerkleRoot using the MerkleProof is completely new. 
 1)	I did not see in the literature (very weak indicator)
-2)	I did not see it any MerkleTree libraries, and I had to write it myself (the code is also included in the thesis) (Another weak indicator)
+2)	I did not see it any MerkleTree libraries, and I had to write it myself (the code is also included in the thesis and in the python code) (Another weak indicator)
+
+**Please note the source code is just for demonstration purposes only, do not use for any other purpose**
+
 Regarding the costs:
 Banks run bigger clusters of Hardware Security Modules for payment services. It is not too much to expect from all CAs to invest in 60 HSM boxes, to guarantee the throughput to serve internet as a whole.  Personally, CAs have at the moment a very lucrative business model. With a single HSM, they can just sing certificates which will be accepted as valid. The consequences of their wrong actions, on the contrary, are very high. [Check Diginotar case](https://en.wikipedia.org/wiki/DigiNotar) 
+
+# What is next
+
+let's discuss and try to falsify my theory :) 
