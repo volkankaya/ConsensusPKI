@@ -42,7 +42,7 @@ PKQuery uses PBFT to verify certificates and to detect a lying CA.
 H(ClientNonce + H(H(subject) + MerkleRoot)) 
 
 Item 4 is very important (see [Pass the hash](https://en.wikipedia.org/wiki/Pass_the_hash)). 
-C)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZKP based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
+C)	Because of items A and B, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, the identification of the subject is crucial process. The APKME uses 2 theories to properly identify a subject with very high certainty. ZKP based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
 
 
 **What we have with X.509**
