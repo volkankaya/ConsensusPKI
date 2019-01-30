@@ -43,6 +43,7 @@
     <Folder Include="Client\" />
     <Folder Include="Certificate\" />
     <Folder Include="DataModel\" />
+    <Folder Include="Documentation\" />
     <Folder Include="Tamarin\" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <Content Include="DataModel\CertificateGenerationHelperData.sql" />
     <Content Include="DataModel\MariaDB-DataModel.sql" />
     <Content Include="hosts.txt" />
+    <Content Include="README.md" />
     <Content Include="startCAServersAndClient.bat">
       <SubType>Code</SubType>
     </Content>
