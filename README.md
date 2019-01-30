@@ -75,9 +75,10 @@ There are two indicators Why I think the concept of calculation MerkleRoot using
 1)	I did not see in the literature (very weak indicator)
 2)	I did not see it any MerkleTree libraries, and I had to write it myself (the code is also included in the thesis and in the python code) (Another weak indicator)
 
-**Please note the source code is just for demonstration purposes only, do not use for any other purpose**
+**Please note:** The source code is just for demonstration purposes, do not use for any other purpose.
 
 Regarding the costs:
+
 Banks run bigger clusters of Hardware Security Modules for payment services. It is not too much to expect from all CAs to invest in 60 HSM boxes, to guarantee the throughput to serve internet as a whole.  Personally, CAs have at the moment a very lucrative business model. With a single HSM, they can just sing certificates which will be accepted as valid. The consequences of their wrong actions, on the contrary, have very big impact. [Check Diginotar case](https://en.wikipedia.org/wiki/DigiNotar) 
 
 # What is next
