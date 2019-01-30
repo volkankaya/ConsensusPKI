@@ -20,11 +20,15 @@ How it is being replaced
 Chained datastore with a flat structure (no hierarchy) complimented by Fetch algorithm so that the local CA certificate data store can be updated by CAs only. You may ask, is there a temper resistance? Although not in the scope, yes there are many ways to achieve that, a trusted platform module TPM is one of it. PKQuery and Fetch are very similar. See PKQuery below for elaboration.
 
 2)	It changes the algorithm that interprets the certificates so that a lying CA would be detected. What is truth and what is a lie? The truth: only the latest issued certificate is a valid certificate, and everything else is a lie.
+
 What we have with X.509	
+
 X.509 path building to construct a trusted path. A certificate is not accepted if there is no trusted path. The certificates in X.509 signed by CAs. Signing indicates that CAs properly identified the subjects in the certificates before the certificate is issued.	
 
 How it is being replaced
+
 PKQuery uses PBFT to verify certificates and to detect a lying CA.
+
 Protection against attacks:
 1)	Asymmetric encryption and signing protect message exchanges
 2)	H(subject) is used in the query to remedy profiling and to protect the privacy of the end users
@@ -35,10 +39,14 @@ H(ClientNonce + H(H(subject) + MerkleRoot)
 
 Item 4 is very important (see “Pass the hash”). 
 3)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZPK based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
+
+
 What we have with X.509	
+
 Single email challenge response to identify the subject. For the rest nothing. It is possible to send the same CSR to many CAs and have many certificates issued for the same subject. They will all be considered as a valid certificate.	
 
 How it is being replaced
+
 With a blockchain datastore that keeps only the ordered h(subjects) as data. The blockchain datastore is very similar to the CA datastore on the clients. It handles sizing issues with a root blockchain. Data addition to blockchain requires PoW to reach consensus about the truth.
 
 The certificates are bundled together in a MerkleTree (The C field in an issued certificate), and only the Merkle root of the Merkle tree is stored in the blockchain.
