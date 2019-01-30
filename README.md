@@ -37,7 +37,7 @@ PKQuery uses PBFT to verify certificates and to detect a lying CA.
 1)	Asymmetric encryption and signing protect message exchanges
 2)	H(subject) is used in the query to remedy profiling and to protect the privacy of the end users
 3)	The client chooses 4 random CAs to ask the truth. The CAs don’t know the other responding CAs, and their only option is to tell the truth
-4)	A client nonce is used during the query. The nonce guarantees that every client receives different truth indicator as a response from the CA
+4)	A client nonce is used during the query. The nonce guarantees that every client receives **different** truth indicator as a response from the CA
 5)	Truth indicator = 
 H(ClientNonce + H(H(subject) + MerkleRoot)) 
 
