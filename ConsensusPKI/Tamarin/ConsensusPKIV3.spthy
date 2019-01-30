@@ -1,0 +1,138 @@
+/*
+ConsensusPKI Tamarin Model
+======================================
+
+Authors: 	Volkan Kaya
+Date: 	    December 2018
+
+Protocol : PKQuery
+
+C -> S: aenc(nonce + h(subject), publickeyServer)
+C <- S: {S,h(nonce + h(h(subject) + merkleroot))}sk(S)
+
+
+*/
+
+theory ConsensusPKI
+begin
+
+builtins: hashing, asymmetric-encryption, signing
+
+// Public key registration
+rule Register_pk:
+    [ Fr(~privatekey) ]
+  -->
+    [ !Ltk($A, ~privatekey), !Pk($A, pk(~privatekey)) ]
+
+	
+// Retrieval of the public key
+rule Get_pk:
+    [ !Pk(A, pubkey) ]
+  -->
+    [ Out(pubkey) ]
+
+// Reveal Private Key of the server !!
+rule Reveal_ltk:
+    [ !Ltk(A, privatekey) ]
+  --[ LtkReveal(A) ]->
+    [ Out(privatekey) ]
+
+// PKQuery process step 1 Client sends the aenc(nonce,h(subject)) to the randomly selected CA server with (Client State 1)
+rule Client_1:
+    [ Fr(~subject)  //Assumed that the client visits a random subject
+	, Fr(~nonce)	//Client picks a random nonce 
+     ,!Pk($Server, publickeyServer)   // lookup public-key of server
+    ]
+	-->
+    [ Client_1( $Server, ~subject, ~nonce )    			// Client store the state 'server' 'subject' and the 'nonce'  next step of thread
+    , Out( aenc(<~nonce,h(~subject)>, publickeyServer) )  // Send the encrypted request to the 'server'
+    ]
+
+// PKQuery process step 3 Client recieves the response signed h(nonce + h(h(subject) + merkleroot))
+rule Client_2:
+    [ Client_1(Server, subject, nonce)   // Retrieve server response 
+	, !Pk(Server, publickeyServer)
+	, In(<h(<nonce,h(<subject,merkleroot>)>),sig>)
+    ]
+--[ 
+   Eq(verify(sig,h(<nonce,h(<subject,merkleroot>)>),publickeyServer),true) 
+  , Authentic(Server,h(<nonce,h(<subject,merkleroot>)>)),  Honest(Server), ValidCertIdentity( Server, h(<nonce,h(<subject,merkleroot>)>) )
+  ]->	
+  [] // Client recieves the response from the CA server to compare with the certificate recieved from the web server of the subject 
+
+
+// PKQuery server process recieves aenc(nonce + h(subject)) and  answers  signed h(nonce + h(h(subject) + merkleroot)) 
+rule Serv_1:
+    [ !Ltk($Server, ~privatekeyServer) // Server lookup own private-key
+    , In( <nonce,h(subject)> ) // recieved from the client
+	, Fr(~merkleroot) // server queries the merkleroot assumed it is random
+    ]
+  --[ AnswerRequest($Server, adec(<nonce,h(subject)>, ~privatekeyServer)) ]-> // Server decrypts the recieved request to find nonce and h(subject) 
+    [ Out(< h(<nonce,h(<h(subject),~merkleroot>)>) , sign(h(<nonce,h(<h(subject),~merkleroot>)>), ~privatekeyServer) >) ]            // Return the signed h(nonce+ h(h(subject)+merkleroot)) to the client
+
+// Restriction the Client and Server cannot be the same												  
+restriction Equality:
+  "All x y #i. Eq(x,y) @i ==> x = y"
+
+
+lemma message_authentication: 
+    "All client nonce subject merkleroot  #i. Authentic(client,h(<nonce,h(<subject,merkleroot>)>)) @i
+     ==> (Ex #j. AnswerRequest(client,h(<nonce,h(<subject,merkleroot>)>)) @j & j<i)
+         | (Ex Client #r. LtkReveal(Client)@r & Honest(Client) @i & r < i)"
+
+lemma Client_subject_secrecy:
+  " /* It cannot be that a  */
+    not(
+      Ex Server subject nonce merkleroot #i #j.
+        /* client has set up a session key 'subject' with a server'Server' */
+        ValidCertIdentity(Server, h(<nonce,h(<subject,merkleroot>)>)) @ #i
+        /* and the adversary knows 'subject' */
+      & K(subject) @ #j
+        /* without having performed a long-term key reveal on 'Server'. */
+      & not(Ex #r. LtkReveal(Server) @ r)
+    )
+  "
+
+lemma Client_nonce_secrecy:
+  " /* It cannot be that a  */
+    not(
+      Ex Server subject nonce merkleroot #i #j.
+        /* client has set up a session key 'subject' with a server'Server' */
+        ValidCertIdentity(Server, h(<nonce,h(<subject,merkleroot>)>)) @ #i
+        /* and the adversary knows 'subject' */
+      & K(nonce) @ #j
+        /* without having performed a long-term key reveal on 'Server'. */
+      & not(Ex #r. LtkReveal(Server) @ r)
+    )
+  " 
+  
+lemma Client_Authenticity:
+  " /* For all requests that the client sends to a server 'Server' containing subject and nonce  */
+    ( All Server subject nonce merkleroot #i.  ValidCertIdentity(Server, h(<nonce,h(<subject,merkleroot>)>) ) @ #i
+       ==>
+         /* the 'Server'  answered the request */
+       ( (Ex #a. AnswerRequest(Server, h(<nonce,h(<subject,merkleroot>)>)) @ a)
+         /* or the adversary performed a privatekey reveal on 'Server'
+            before the client sent the query. */
+       | (Ex #r. LtkReveal(Server) @ r & r < i)
+       )
+    )
+  "
+
+lemma Client_Authenticity_Injective:
+  " /* For all requests that the client sends to a server 'Server' containing subject and nonce  */
+    ( All Server subject nonce merkleroot #i.  ValidCertIdentity(Server, h(<nonce,h(<subject,merkleroot>)>)) @ #i
+       ==>
+         /* the 'Server'  answered the request */
+       ( (Ex #a. AnswerRequest(Server, h(<nonce,h(<subject,merkleroot>)>)) @ a
+           /* and there is no other client that had the same request */
+           & (All #j. ValidCertIdentity(Server, h(<nonce,h(<subject,merkleroot>)>)) @ #j ==> #i = #j)
+       )
+         /* or the adversary performed a privatekey reveal on 'Server'
+            before the client sent the query. */
+       | (Ex #r. LtkReveal(Server) @ r & r < i)
+       )
+    )
+  "
+
+end

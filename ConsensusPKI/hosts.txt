@@ -1,0 +1,11 @@
+127.0.0.1 consensuspkidbhost
+127.0.0.1 node1.consensuspki.org
+127.0.0.1 node2.consensuspki.org
+127.0.0.1 node3.consensuspki.org
+127.0.0.1 node4.consensuspki.org
+127.0.0.1 node5.consensuspki.org
+127.0.0.1 node6.consensuspki.org
+127.0.0.1 node7.consensuspki.org
+127.0.0.1 node8.consensuspki.org
+127.0.0.1 node9.consensuspki.org
+127.0.0.1 node10.consensuspki.org

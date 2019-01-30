@@ -1,0 +1,176 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>4b8ed9b1-fde8-4bd2-8783-009bebfbcbba</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Certificate\JCRTandDataGenerator.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>ConsensusPKI</Name>
+    <RootNamespace>ConsensusPKI</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CA\CAQueryServerECDSA.py" />
+    <Compile Include="CA\CAQueryServerRSA10EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA1EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA2EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA3EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA4EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA5EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA6EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA7EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA8EncV2.py" />
+    <Compile Include="CA\CAQueryServerRSA9EncV2.py" />
+    <Compile Include="Certificate\JCRTandDataGenerator.py" />
+    <Compile Include="Client\PKQ_ECDSA_Client.py" />
+    <Compile Include="Client\PKQ_RSA_ClientVEncV3.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CA\" />
+    <Folder Include="Certificate\CA\" />
+    <Folder Include="Certificate\GeneratedCerts\" />
+    <Folder Include="Client\" />
+    <Folder Include="Certificate\" />
+    <Folder Include="DataModel\" />
+    <Folder Include="Tamarin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Certificate\CA\PrivateKeyECDSA.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSA.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA1.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA10.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA2.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA3.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA4.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA5.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA6.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA7.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA8.pem" />
+    <Content Include="Certificate\CA\PrivateKeyRSACA9.pem" />
+    <Content Include="Certificate\CA\PublicKeyECDSA.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSA.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA1.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA10.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA2.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA3.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA4.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA5.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA6.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA7.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA8.pem" />
+    <Content Include="Certificate\CA\PublicKeyRSACA9.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.abnamro.nl1544394715500CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.abnamro.nl1544394715500CVRFileWithPublicKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.abnamro.nl1544394715500PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.abnamro.nl1544394715500PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.consensuspki.org1544528393029PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544394444021CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544394444021CVRFileWithPublicKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544394444021PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544394444021PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544529059481PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544530901238PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531330476PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544531569490PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.com1544532406805PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544369573592PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544369573592PrivateKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544369573592PrivateKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544369573592PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544385570995PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544385570995PrivateKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544385570995PrivateKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544385570995PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544394313470CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544394313470CVRFileWithPublicKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544394313470PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.google.nl1544394313470PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544381463171PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544381463171PrivateKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544381463171PrivateKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544381463171PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544393987352CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544393987352CVRFileWithPublicKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544393987352PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.ing.nl1544393987352PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780CertificateFileWithPublicKeyRSAUnsigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780CVRFileWithPublicKeyRSASigned.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780DomainPrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780DomainPublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.kpn.com1544528588780PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544386162990PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544386162990PrivateKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544386162990PrivateKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544386162990PublicKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544393589754CertificateFileWithPublicKeyRSAWithProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544393589754CVRFileWithPublicKeyRSAWOProof.jcrt" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544393589754PrivateKeyRSA.pem" />
+    <Content Include="Certificate\GeneratedCerts\www.nos.nl1544393589754PublicKeyRSA.pem" />
+    <Content Include="DataModel\CA-TestData.sql" />
+    <Content Include="DataModel\CertificateGenerationHelperData.sql" />
+    <Content Include="DataModel\MariaDB-DataModel.sql" />
+    <Content Include="hosts.txt" />
+    <Content Include="startCAServersAndClient.bat">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Tamarin\ConsensusPKIV3.spthy" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
