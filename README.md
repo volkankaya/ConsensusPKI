@@ -7,7 +7,7 @@ ConsensusPKI changes the core of the X.509 PKI from “trust” to “not lying.”
 
 A Certificate authority in ConsensusPKI is an entity that never lies.
 
-Using this core principle, the ConsensusPKI solves all known issues that X.509 suffers. [Please refer to my thesis under the documentation for detailed explanation of the flaws]
+Using this core principle, the ConsensusPKI solves all known issues that X.509 suffers. [Please refer to my thesis under the documentation for detailed explanation of the flaws](https://github.com/volkankaya/ConsensusPKI/blob/master/ConsensusPKI/Documentation/ConsensusPKI%20-%20Data%20Driven%20Public%20Key%20Ecosystem%20backed%20by%20Blockchain%20and%20Fault%20Tolerance%20-%20Final%20-22-Jan-2019.pdf)
 
 ## How it does;
 A)	Replaces the local trust store on an end-user system with a chained CA certificate datastore, so that the local CA datastore on the end-user system would be managed by CAs only. Updating local CA certificate data store is managed by Fetch algorithm of the ConsensusPKI.
@@ -20,7 +20,9 @@ Local CA datastore that end users, programs, and administrators can add remove C
 
 Chained datastore with a flat structure (no hierarchy) complimented by Fetch algorithm so that the local CA certificate data store can be updated by CAs only. You may ask, is there a temper resistance? Although not in the scope, yes there are many ways to achieve that, a trusted platform module TPM is one of it. PKQuery and Fetch are very similar. See PKQuery below for elaboration.
 
-B)	It changes the algorithm that interprets the certificates so that a lying CA would be detected. What is truth and what is a lie? The truth: only the latest issued certificate is a valid certificate, and everything else is a lie.
+B)	It changes the algorithm that interprets the certificates so that a lying CA would be detected. What is truth and what is a lie? 
+
+**The truth**: only the latest issued certificate is a valid certificate, and everything else is a lie.
 
 **What we have with X.509**
 
@@ -37,7 +39,7 @@ PKQuery uses PBFT to verify certificates and to detect a lying CA.
 3)	The client chooses 4 random CAs to ask the truth. The CAs don’t know the other responding CAs, and their only option is, to tell the truth
 4)	A client nonce is used during the query. The nonce guarantees that every client receives different truth indicator as a response from the CA
 5)	Truth indicator = 
-H(ClientNonce + H(H(subject) + MerkleRoot) 
+H(ClientNonce + H(H(subject) + MerkleRoot)) 
 
 Item 4 is very important (see [Pass the hash](https://en.wikipedia.org/wiki/Pass_the_hash)). 
 C)	Because of item 1 and 2, CAs are obligated to keep the truth.  The CAs need a structure to come to a consensus about the truth. Because there is only one truth for every subject, identification of the subject is crucial. APKME uses 2 theories to properly identify a subject with very high certainty. ZPK based on Bayes rule to increase certainty, and PBFT to detect a lying CA during identification.
