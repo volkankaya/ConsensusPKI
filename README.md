@@ -9,6 +9,9 @@ A Certificate authority in ConsensusPKI is an entity that never lies.
 
 Using this core principle, the ConsensusPKI solves all known issues that X.509 suffers. [Please refer to my thesis under the documentation for detailed explanation of the flaws](https://github.com/volkankaya/ConsensusPKI/blob/master/ConsensusPKI/Documentation/ConsensusPKI%20-%20Data%20Driven%20Public%20Key%20Ecosystem%20backed%20by%20Blockchain%20and%20Fault%20Tolerance%20-%20Final%20-22-Jan-2019.pdf)
 
+## Short Video Presentation
+[Short video about the ConsensusPKI](https://www.youtube.com/watch?v=F8fKiyn8Ekk)
+
 ## How it does;
 A)	Replaces the local trust store on an end-user system with a chained CA certificate datastore, so that the local CA datastore on the end-user system would be managed by CAs only. Updating local CA certificate data store is managed by Fetch algorithm of the ConsensusPKI.
 
