@@ -1,10 +1,12 @@
 # How to run the ConsensusPKI PKQuery simulator on your local environment
 Please follow below instructions to run the simulation on your local environment
-# Installation
+
+# Data 
 You need to have the consensuspki database up and running on your local PC. You have below alternatives 
 1) Use the SQL files in the project under DataModel to create the database with a limited data. If you choose this path, create new certificates using the JCRTandDataGenerator.py script under the certificates. 
 2) [Dowload full database backup to your local machine 1.7 GB](https://drive.google.com/drive/folders/1xqpO7Aa7t7vnzkzyQmSc-FwYRof_imhE?usp=sharing) and restore it to your local MariaDB server.
 
+# Installation
 1) Download and install MariaDB if you dont have it installed on your PC
 2) Install Python preferably 64bit
 3) Install following python librarites 
