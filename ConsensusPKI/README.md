@@ -24,6 +24,7 @@ It would be best if you had the consensuspki database up and running on your loc
 <li>Create a MariaDB User called user with password difficultpass and gave required permissions on the consensuspki database to cuser (if you don't want to update the scripts manually :) )</li>
 <li>You can now run the servers one by one or simply run startCAServersAndClient.bat under windows (You can also create your script to run the servers and the client in a single execution if you use another OS)</li>
 </ol>
+
 # An Example Simulation Run
 1) On the client application, the simulator asks first a hostname; enter www.google.com
 2) when it asks enter www.google.com1544532406805CertificateFileWithPublicKeyRSAWithProof.jcrt as the certificate name
