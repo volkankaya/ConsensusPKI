@@ -160,6 +160,7 @@
     <Content Include="DataModel\CertificateGenerationHelperData.sql" />
     <Content Include="DataModel\MariaDB-DataModel.sql" />
     <Content Include="hosts.txt" />
+    <Content Include="README.md" />
     <Content Include="startCAServersAndClient.bat">
       <SubType>Code</SubType>
     </Content>
