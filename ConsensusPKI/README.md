@@ -9,13 +9,15 @@ It would be best if you had the consensuspki database up and running on your loc
 # Installation
 1) Download and install MariaDB if you don't have it on your PC
 2) Install Python (preferably 64bit version)
-3) Install the following python libraries 
-	3a) mysql-connector
-	3b) pycryptodome
-	3c) pycryptodomex
-	3d) rsa
-	3e) ecdsa (if you would like to check ecdsa)
-	3f) merkletools
+3) Install the following python libraries using "pip install library_name"
+<ol>
+  <li>mysql-connector</li>
+  <li>pycryptodome</li>
+  <li>pycryptodomex</li>
+  <li>rsa</li>
+  <li>ecdsa (if you would like to check ecdsa)</li>
+  <li>merkletools</li>
+</ol>
 4) Add the hosts in the hosts.txt file to your hosts file. For Ubuntu, it is under /etc/hosts, and for windows, it is under c:\Windows\System32\drivers\etc\hosts
 5) Restore the downloaded MariaDB backup to your MariaDB server
 6) Create a MariaDB User called user with password difficultpass and gave required permissions on the consensuspki database to cuser (if you don't want to update the scripts manually :) )
